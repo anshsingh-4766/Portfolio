@@ -1,144 +1,109 @@
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, Download, ChevronDown } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ChevronDown, Download, Github, Linkedin, Mail, Twitter } from "lucide-react";
+
+const socials = [
+  { icon: Github, href: "https://github.com/anshsingh-4766", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/ansh-singh-6a2940334/", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/anshsingh4766", label: "Twitter" },
+  { icon: Mail, href: "#contact", label: "Email" },
+];
 
 export function Hero() {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-purple-950"
-    >
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
-      </div>
+    <section id="home" className="relative overflow-hidden pb-16 pt-36 sm:pt-44">
+      <div className="floating-orb animate-floaty left-[-8rem] top-28 h-56 w-56 bg-sky-200/80" />
+      <div className="floating-orb animate-floaty right-[-7rem] top-20 h-60 w-60 bg-teal-200/70 [animation-delay:1.2s]" />
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
-
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <div className="w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-1">
-            <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
-              <span className="text-6xl">👨‍💻</span>
-            </div>
-          </div>
-        </motion.div>
-
+      <div className="section-wrap relative z-10 text-center">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-purple-400 text-lg mb-4"
+          transition={{ duration: 0.45 }}
+          className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-slate-600"
         >
-          Hello, I'm
+          Frontend Developer
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-5xl md:text-7xl font-bold text-white mb-4"
+          transition={{ duration: 0.55, delay: 0.08 }}
+          className="headline mx-auto max-w-4xl text-4xl font-semibold leading-tight text-slate-900 sm:text-6xl"
         >
-          Ansh Singh
+          Clean Interfaces, Thoughtful Interactions, and Reliable Frontend Code.
         </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-xl md:text-2xl text-gray-400 mb-8"
-        >
-          <span className="text-purple-400">Frontend Developer</span> | Learning UI Design
-        </motion.div>
-
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto"
+          transition={{ duration: 0.55, delay: 0.16 }}
+          className="muted mx-auto mt-6 max-w-2xl text-base sm:text-lg"
         >
-          Passionate about creating beautiful, functional, and user-friendly web applications.
-          Turning ideas into reality through clean code and modern design.
+          I am Ansh Singh. I design and build responsive web experiences that look polished,
+          feel smooth, and stay easy to use across devices.
         </motion.p>
 
-        {/* Social Links */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex items-center justify-center gap-4 mb-10"
-        >
-          {[
-            { icon: Github, href: 'https://github.com/anshsingh-4766', label: 'GitHub' },
-            { icon: Linkedin, href: 'https://www.linkedin.com/in/ansh-singh-6a2940334/', label: 'LinkedIn' },
-            { icon: Twitter, href: 'https://x.com/anshsingh4766', label: 'Twitter' },
-            { icon: Mail, href: '#contact', label: 'Email' },
-          ].map((social, index) => (
-            <motion.a
-              key={social.label}
-              href={social.href}
-              target={social.href.startsWith('http') ? '_blank' : undefined}
-              rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-purple-400 hover:border-purple-400 hover:bg-purple-400/10 transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7 + index * 0.1 }}
-            >
-              <social.icon size={20} />
-            </motion.a>
-          ))}
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.5, delay: 0.24 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
           <a
             href="#projects"
-            className="px-8 py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
+            className="rounded-full bg-slate-900 px-7 py-3 text-sm font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
           >
-            View My Work
+            View Projects
           </a>
           <a
             href="/Ansh_Singh_Resume.pdf"
             download="Ansh_Singh_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 border border-white/20 rounded-full text-white font-medium hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-7 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-slate-900 hover:text-slate-900"
           >
-            <Download size={18} />
-            Download CV
+            <Download size={16} />
+            Download Resume
           </a>
         </motion.div>
 
-        {/* Scroll Indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.32 }}
+          className="mt-9 flex items-center justify-center gap-3"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="text-gray-500"
-          >
-            <ChevronDown size={32} />
-          </motion.div>
+          {socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+              rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="soft-ring rounded-full bg-white p-3 text-slate-600 transition-all duration-300 hover:-translate-y-0.5 hover:text-slate-900"
+              aria-label={social.label}
+            >
+              <social.icon size={18} />
+            </a>
+          ))}
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9 }}
+        className="mt-14 flex justify-center"
+      >
+        <motion.a
+          href="#about"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity }}
+          className="text-slate-500"
+          aria-label="Scroll to about section"
+        >
+          <ChevronDown size={30} />
+        </motion.a>
+      </motion.div>
     </section>
   );
 }

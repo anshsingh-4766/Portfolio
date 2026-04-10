@@ -1,133 +1,104 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
 
 const GITHUB_PROFILE = "https://github.com/anshsingh-4766";
 
 const projects = [
   {
-    title: 'Command-palette',
+    title: "Command Palette UI",
     description:
-      'A clean and responsive command palette interface designed to improve quick navigation and search experience.',
-    image: '⌘',
-    tags: ['TypeScript', 'React', 'Tailwind CSS', 'HTML'],
-    github: '#',
-    live: '#',
+      "A responsive command palette concept focused on quick keyboard interaction and clean visual hierarchy.",
+    tags: ["React", "TypeScript", "Tailwind CSS"],
+    github: "#",
+    live: "#",
   },
   {
-    title: 'Calculator',
+    title: "Calculator",
     description:
-      'A basic calculator web app that performs standard arithmetic operations with a clean and responsive UI. Built to practice JavaScript logic and frontend fundamentals.',
-    image: '🧮',
-    tags: ['HTML', 'JavaScript', 'CSS'],
-    github: '#',
-    live: '#',
+      "A lightweight calculator with solid JavaScript logic and a minimal layout that works well on mobile and desktop.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "#",
+    live: "#",
   },
   {
-    title: 'Vahan Info',
+    title: "Vahan Info",
     description:
-      'A basic website to fetch vehicle information such as owner name, registration year, and other vehicle details.',
-    image: '🚗',
-    tags: ['HTML', 'JavaScript', 'CSS'],
-    github: '#',
-    live: '#',
+      "A utility website to fetch vehicle details with a clear flow for search input, results display, and usability.",
+    tags: ["JavaScript", "API", "UI"],
+    github: "#",
+    live: "#",
   },
 ];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 bg-gray-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
+    <section id="projects" className="py-20 sm:py-24">
+      <div className="section-wrap">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-12 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-            My <span className="text-purple-400">Projects</span>
-          </h2>
-
-          {/* GitHub Profile Link */}
+          <h2 className="section-title">Selected Projects</h2>
+          <p className="muted mx-auto mt-4 max-w-2xl">
+            Practical builds where I focused on clean UI, responsive behavior, and reliable frontend logic.
+          </p>
           <a
             href={GITHUB_PROFILE}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition mb-5"
+            className="mt-5 inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm text-slate-700 transition-colors hover:border-slate-900 hover:text-slate-900"
           >
-            <Github size={20} />
+            <Github size={16} />
             github.com/anshsingh-4766
           </a>
-
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mb-6" />
-
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Some of the projects I’ve built while learning and improving my frontend skills.
-          </p>
         </motion.div>
 
-        {/* Projects */}
-        <div className="space-y-12">
+        <div className="space-y-5">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
               viewport={{ once: true }}
-              className="grid md:grid-cols-2 gap-8 items-center"
+              className="glass-surface rounded-[2rem] p-6 sm:p-7"
             >
-              {/* Image */}
-              <motion.div whileHover={{ scale: 1.03 }} className="relative group">
-                <div className="aspect-video bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-2xl border border-white/10 flex items-center justify-center">
-                  <span className="text-8xl transition-transform group-hover:scale-110">
-                    {project.image}
-                  </span>
+              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900">{project.title}</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">{project.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="absolute inset-0 bg-black/70 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                <div className="flex items-center gap-2">
                   <a
                     href={project.github}
-                    className="p-3 bg-white/10 rounded-full hover:bg-white/20"
+                    className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 transition-colors hover:border-slate-900 hover:text-slate-900"
                   >
-                    <Github className="text-white" />
+                    <Github size={16} />
+                    Code
                   </a>
                   <a
                     href={project.live}
-                    className="p-3 bg-white/10 rounded-full hover:bg-white/20"
+                    className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm text-white transition-transform duration-300 hover:-translate-y-0.5"
                   >
-                    <ExternalLink className="text-white" />
+                    <ExternalLink size={16} />
+                    Live
                   </a>
                 </div>
-              </motion.div>
-
-              {/* Content */}
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {project.title}
-                </h3>
-
-                <div className="bg-gray-900/80 rounded-xl p-6 border border-white/10 mb-4">
-                  <p className="text-gray-400">{project.description}</p>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-purple-500/20 text-purple-400 text-sm rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,13 +1,29 @@
 @import "tailwindcss";
 
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffffcc;
+  --surface-strong: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --line: #d7dfed;
+  --brand: #0f4c81;
+  --brand-soft: #2d6ea9;
+  --accent: #0ea5a4;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #000;
-  color: #fff;
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(50rem 24rem at -10% -10%, #dbeafe 0%, transparent 65%),
+    radial-gradient(45rem 20rem at 110% 0%, #d1fae5 0%, transparent 62%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  color: var(--text);
 }
 
 ::-webkit-scrollbar {
@@ -15,19 +31,79 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #e2e8f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8b5cf6;
+  background: #93a7c5;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a78bfa;
+  background: #5f7ca7;
 }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.3);
-  color: #fff;
+  background: rgba(15, 76, 129, 0.2);
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.section-wrap {
+  width: min(1100px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.glass-surface {
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 36px rgba(15, 23, 42, 0.07);
+}
+
+.soft-ring {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.headline {
+  letter-spacing: -0.03em;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.floating-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(36px);
+  pointer-events: none;
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
 }
